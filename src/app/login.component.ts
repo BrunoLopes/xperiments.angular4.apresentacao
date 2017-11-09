@@ -2,37 +2,37 @@ import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
 
 @Component({
-    selector: 'register',
+    selector: 'login',
     template: `
         Register
         <mat-card>
             <mat-card-header>
                 <mat-card-title>
-                    <h4>Register new User</h4>
+                    <h4>Login</h4>
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content>
                 <form>
                     <mat-form-field>
-                        <input [(ngModel)]="registerData.email" name="email" matInput placeholder="Email" type="email" >
+                        <input [(ngModel)]="loginData.email" name="email" matInput placeholder="Email" type="email" >
                     </mat-form-field>
                     <mat-form-field>
-                        <input [(ngModel)]="registerData.pwd" name="password" matInput placeholder="Password" type="password" >
+                        <input [(ngModel)]="loginData.pwd" name="password" matInput placeholder="Password" type="password" >
                     </mat-form-field>
-                    <button (click)="post()" mat-raised-button color="primary">Register</button>
+                    <button (click)="post()" mat-raised-button color="primary">Login</button>
                 </form>
             </mat-card-content>
         </mat-card>
     `,
 })
-export class RegisterComponent {
-    registerData = {}
+export class LoginComponent {
+    loginData = {}
 
     constructor(private authService: AuthService) { }
     
     post()
     {
-        this.authService.registerUser(this.registerData)
+        this.authService.loginUser(this.loginData)
     }
 
 }

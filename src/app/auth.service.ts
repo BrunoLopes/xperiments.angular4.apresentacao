@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
+import { environment } from '../environments/environment'
 
 @Injectable()
 export class AuthService{
     messages = [];
-    path = 'http://localhost:6799/auth'
-    TOKEN_KEY = 'token'
+    path = environment.path + '/auth'
+    private TOKEN_KEY = 'token'
     constructor(private http: HttpClient) { }
 
     get token(){
@@ -29,8 +30,12 @@ export class AuthService{
     }
 
     loginUser(loginData) {
-        this.http.post<any>(this.path + '/login', loginData).subscribe(res => {
-            this.saveToken(res.token)
+        this.http.post<any>(this.path + '/login', loginData)
+        .subscribe(res => {
+            if(res.token)
+                this.saveToken(res.token)
+        }, err => {
+            console.log('error on logging user')
         })
     }
 

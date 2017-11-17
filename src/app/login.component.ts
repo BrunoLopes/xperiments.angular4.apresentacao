@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Injectable, Injector } from '@angular/core';
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'login',
     template: `
-        Register
         <mat-card>
             <mat-card-header>
                 <mat-card-title>
@@ -19,20 +19,31 @@ import { AuthService } from './auth.service';
                     <mat-form-field>
                         <input [(ngModel)]="loginData.pwd" name="password" matInput placeholder="Password" type="password" >
                     </mat-form-field>
-                    <button (click)="post()" mat-raised-button color="primary">Login</button>
+                    <button mat-raised-button (click)="post()" color="primary">Login</button>
                 </form>
             </mat-card-content>
         </mat-card>
     `,
 })
+@Injectable()
 export class LoginComponent {
     loginData = {}
 
-    constructor(private authService: AuthService) { }
+    //constructor(private authService: AuthService) { }
+    constructor(private injector: Injector){}
+
     
     post()
     {
-        this.authService.loginUser(this.loginData)
+        var authService = this.injector.get(AuthService)
+        var router = this.injector.get(Router)
+        
+        authService.loginUser(this.loginData)
+
+        console.log(authService.isAuthenticated + ' = conected')
+
+        router.navigate(['']);
+        
     }
 
 }

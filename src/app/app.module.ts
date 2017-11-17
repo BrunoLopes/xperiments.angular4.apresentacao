@@ -21,26 +21,31 @@ import { UsersComponent } from './users.component'
 import { ProfileComponent } from './profile.component'
 import { PostComponent } from './post.component'
 import { AuthInterceptorService } from './authInterceptor'
-
+import { HomeComponent } from './home.component'
+import { ErrorComponent } from './erro.component'
 
 const routes = [
-  { path: '', component: PostComponent },
+  { path: '', component: HomeComponent },
+  { path: 'post', component: PostComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'users', component: UsersComponent },
   { path: 'profile/:id', component: ProfileComponent },
-
+  { path: 'error', component: ErrorComponent },
+  
 ]
 
 @NgModule({
   declarations: [
     AppComponent, 
+    HomeComponent,
     MessagesComponent, 
     RegisterComponent, 
     LoginComponent, 
     UsersComponent, 
     ProfileComponent, 
-    PostComponent
+    PostComponent,
+    ErrorComponent
   ],
   imports: [
       BrowserModule, 

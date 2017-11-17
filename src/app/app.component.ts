@@ -5,11 +5,11 @@ import { AuthService } from './auth.service';
     selector: 'app-root',
     template: `
       <mat-toolbar>
-        <button mat-button routerLink="/">Xperiment Test</button>
-        <button mat-button routerLink="/users">Users</button>
+        <button mat-button *ngIf="authService.isAuthenticated" routerLink="/post">Post</button>
+        <button mat-button *ngIf="authService.isAuthenticated" routerLink="/users">Users</button>
         <span style="flex: 1 1 auto"></span>
         <button mat-button *ngIf="!authService.isAuthenticated" routerLink="/register">Register</button>
-        <button mat-button *ngIf="authService.isAuthenticated" (click)="authService.logout()">Logout</button>
+        <button mat-button *ngIf="authService.isAuthenticated" (click)="authService.logout()" routerLink="/login">Logout</button>
         <button mat-button *ngIf="!authService.isAuthenticated" routerLink="/login">Login</button>
       </mat-toolbar>
       <router-outlet></router-outlet>

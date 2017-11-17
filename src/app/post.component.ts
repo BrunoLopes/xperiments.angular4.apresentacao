@@ -27,7 +27,6 @@ export class PostComponent {
     postMsg = ''
 
     post(){
-        console.log(this.postMsg)
         this.apiService.postMessage({msg: this.postMsg})
     }
 }

@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router'
 @Component({
     selector: 'login',
     template: `
-        Register
         <mat-card>
             <mat-card-header>
                 <mat-card-title>

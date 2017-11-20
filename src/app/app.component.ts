@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
     selector: 'app-root',
@@ -14,7 +14,7 @@ import { AuthService } from './auth.service';
       </mat-toolbar>
       <router-outlet></router-outlet>
     `,
-    styleUrls: ['./app.component.css']
+    //styleUrls: ['./app.component.css']
 })
 export class AppComponent {
 
